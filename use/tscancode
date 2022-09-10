@@ -1,0 +1,24 @@
+#! /bin/sh
+
+echo "welcome to use tscancode to check stcatic c code"
+
+cat << comment
+usage:
+sh tscancode [source code file/directory] [scan result file]
+comment
+
+cmdparatol=$#
+
+if [ $cmdparatol != 2 ] ; then
+    echo "input param error, please refer to usage"
+    exit 1
+fi
+
+SrcCheckDir=$1
+OutResFile=$2
+
+. tscancode.cfg
+
+$tscancode_path --xml --enable=all -q $1 > $2 2>&1
+
+echo "Check end. Thank you support wangzhonglai."
